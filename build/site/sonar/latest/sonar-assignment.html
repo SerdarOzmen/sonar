@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Integrating with GitHub :: Documentation</title>
+    <link rel="canonical" href="http:localhost:5000/sonar/latest/sonar-assignment.html">
+    <link rel="prev" href="index.html">
+    <meta name="generator" content="Antora 3.1.7">
+    <link rel="stylesheet" href="../../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="http:localhost:5000">Documentation</a>
+      <button class="navbar-burger" aria-controls="topbar-nav" aria-expanded="false" aria-label="Toggle main menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Product A</a>
+            <a class="navbar-item" href="#">Product B</a>
+            <a class="navbar-item" href="#">Product C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Service A</a>
+            <a class="navbar-item" href="#">Service B</a>
+            <a class="navbar-item" href="#">Service C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="sonar" data-version="latest">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="index.html">SonarQube</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">DevOps Platform Integration</span>
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="sonar-assignment.html">Integrating with GitHub</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">SonarQube</span>
+    <span class="version">latest</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="index.html">SonarQube</a></div>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html">latest</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="sonar-assignment.html" class="home-link is-current"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">SonarQube</a></li>
+    <li>DevOps Platform Integration</li>
+    <li><a href="sonar-assignment.html">Integrating with GitHub</a></li>
+  </ul>
+</nav>
+<div class="edit-this-page"><a href="file:///Users/serdarozmen/Desktop/sonar/docs/modules/ROOT/pages/sonar-assignment.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="1">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Integrating with GitHub</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>SonarQube&#8217;s integration with GitHub Enterprise, Team, or Free plans allows you to maintain code quality and security in your GitHub repositories.</p>
+</div>
+<div class="paragraph">
+<p>This integration allows you to easily set up SonarQube projects for your GitHub repositories.</p>
+</div>
+<div class="paragraph">
+<p>For the integration to work, you must complete the following main tasks:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Enabling the import of GitHub repositories into SonarQube</p>
+</li>
+<li>
+<p>Authenticating with GitHub</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The following sections detail these tasks.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>In case you are using GitHub Enterprise, the minimum supported version for the integration is GitHub Enterprise 2.15.</p>
+</div>
+<div class="paragraph">
+<p>You can see the version you are using in the footer of any GitHub Enterprise page.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="enabling-the-import-of-github-repositories-into-sonarqube"><a class="anchor" href="#enabling-the-import-of-github-repositories-into-sonarqube"></a>Enabling the Import of GitHub Repositories into SonarQube</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You need to use a GitHub App to connect SonarQube and GitHub so you can import your GitHub repositories into SonarQube.</p>
+</div>
+<div class="paragraph">
+<p>Complete the following steps whose details are provided in the below sections:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Creating your GitHub App.</p>
+</li>
+<li>
+<p>Installing the GitHub App to your organization.</p>
+</li>
+<li>
+<p>Updating the SonarQube GitHub configuration with the GitHub App information.</p>
+</li>
+</ol>
+</div>
+<div class="sect2">
+<h3 id="step-1-creating-your-github-app"><a class="anchor" href="#step-1-creating-your-github-app"></a>Step 1: Creating your GitHub App</h3>
+<div class="paragraph">
+<p>Complete the steps as instructed in GitHub&#8217;s documentation on <a href="https://docs.github.com/en/apps/creating-github-apps/registering-a-github-app" target="_blank" rel="noopener">creating a GitHub App</a>.</p>
+</div>
+<div class="paragraph">
+<p>When you reach to the <strong>Permissions</strong> step, select the following permissions:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Read &amp; write</code> permission for <strong>Checks</strong>.</p>
+</li>
+<li>
+<p><code>Read-only</code> permission for <strong>Repository Metadata</strong> (GitHub Enterprise) or <strong>Metadata</strong> (GitHub Free and Team)</p>
+</li>
+<li>
+<p><code>Read-only</code> permission for <strong>Pull Requests</strong></p>
+</li>
+<li>
+<p><code>Read-only</code> permission for <strong>Commit Statuses</strong></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>After you create the GitHub App, you land in to the GitHub App&#8217;s page. Navigate to the <strong>General</strong> tab of this page and notice the following values:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>App ID</p>
+</li>
+<li>
+<p>Client ID</p>
+</li>
+<li>
+<p>Client secret (you must generate one)</p>
+</li>
+<li>
+<p>Private key (you must generate one)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>You will use these values in <a href="#step-3-updating-the-sonarqube-github-configuration-with-the-github-app-information">Step 3</a> below.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="step-2-installing-the-github-app-to-your-organization"><a class="anchor" href="#step-2-installing-the-github-app-to-your-organization"></a>Step 2: Installing the GitHub App to Your Organization</h3>
+<div class="paragraph">
+<p>Complete the steps as instructed in GitHub&#8217;s documentation on <a href="https://docs.github.com/en/apps/using-github-apps/installing-your-own-github-app" target="_blank" rel="noopener">installing GitHub Apps</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="step-3-updating-the-sonarqube-github-configuration-with-the-github-app-information"><a class="anchor" href="#step-3-updating-the-sonarqube-github-configuration-with-the-github-app-information"></a>Step 3: Updating the SonarQube GitHub Configuration with the GitHub App Information</h3>
+<div class="paragraph">
+<p>This step enables the import of GitHub repositories. Do the following:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>In your SonarQube, navigate to <strong>Administration</strong> &#8594; <strong>Configuration</strong> &#8594; <strong>General Settings</strong> &#8594; <strong>ALM Integrations</strong>, and select the <strong>GitHub</strong> tab.</p>
+</li>
+<li>
+<p>Click the <strong>Edit</strong> button within the GitHub App section of the page.</p>
+</li>
+<li>
+<p>Edit the fields as follows (all are mandatory):</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p><strong>Configuration name:</strong> Specify a name for the GitHub configuration. For example, <code>GitHub</code>.</p>
+</li>
+<li>
+<p><strong>GitHub API URL:</strong> For example, <code>https://github.company.com/api/v3</code> for GitHub Enterprise or <code>https://api.github.com/</code> for GitHub Free or Team.</p>
+</li>
+<li>
+<p><strong>GitHub App ID:</strong> App ID you see in Step 1.</p>
+</li>
+<li>
+<p><strong>Client ID:</strong> Client ID you see in Step 1.</p>
+</li>
+<li>
+<p><strong>Client Secret:</strong> Click <code>Update field value</code> to update the client secret with the one you see in Step 1.</p>
+</li>
+<li>
+<p><strong>Private Key:</strong> Click <code>Update field value</code> to update the private key with the one you see in Step 1.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Click the <strong>Save Configuration</strong> button to finish enabling the import of your GitHub repositories using this GitHub App.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="authenticating-with-github"><a class="anchor" href="#authenticating-with-github"></a>Authenticating with GitHub</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can now enable the authentication of SonarQube with Github using the same SonarQube page (Step 3 above) and Github App (Step 1 above).
+This authentication allows your organization&#8217;s users to log in to SonarQube with their GitHub credentials.</p>
+</div>
+<div class="paragraph">
+<p>Complete the following steps:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Follow the on-screen instructions provided under the <strong>GitHub Authentication</strong> section of the page.</p>
+</li>
+<li>
+<p>Set the <strong>Enabled</strong> switch to true.</p>
+</li>
+<li>
+<p>Specify the <strong>Client ID</strong> and <strong>Client Secret</strong> as the values you entered in Step 3 above.</p>
+</li>
+<li>
+<p>Leave the <strong>Allow users to sign-up</strong> switch as it is (true as default).</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Your organization&#8217;s users can now connect their GitHub accounts from the SonarQube&#8217;s login page using the <strong>Log in with GitHub</strong> option.
+By enabling the GitHub repository import and authentication, you&#8217;ve successfully completed the integration between SonarQube and GitHub.</p>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="index.html">SonarQube</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script id="site-script" src="../../_/js/site.js" data-ui-root-path="../../_"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>
