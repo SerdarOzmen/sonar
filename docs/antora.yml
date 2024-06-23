@@ -1,0 +1,11 @@
+name: sonar
+title: Sonar
+version: 'latest'
+display_version: 'latest'
+asciidoc:
+  attributes:
+    full-version: 'latest'
+    experimental: true
+    page-toclevels: 1@
+nav:
+  - modules/ROOT/nav.adoc
