@@ -1,7 +1,7 @@
 site:
   title: Documentation
   url: http:localhost:5000
-  start_page: sonar:sonar-assignment.adoc
+  start_page: sonar:ROOT:sonar-assignment.adoc
   robots: disallow
 content:
   sources: 

@@ -1,5 +1,5 @@
 name: sonar
-title: Sonar
+title: SonarQube
 version: 'latest'
 display_version: 'latest'
 asciidoc:

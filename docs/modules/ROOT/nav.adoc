@@ -1,2 +1,2 @@
-.Importing GitHub Repositories
+.DevOps Platform Integration
 * xref:sonar-assignment.adoc[]

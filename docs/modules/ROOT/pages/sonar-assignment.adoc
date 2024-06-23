@@ -1,55 +1,99 @@
-= Importing GitHub Repositories
+// The section talks not about only importing repos, but also authentication. In addition, the UI presents the parent feature as "ALM Integrations". Hence, the title edit.
+= Integrating with GitHub
 
+// Github.com looked strange to me, so listing all the plans.
+SonarQube's integration with GitHub Enterprise, Team, or Free plans allows you to maintain code quality and security in your GitHub repositories.
 
-SonarQube's integration with GitHub Enterprise and GitHub.com allows you to maintain code quality and security in your GitHub repositories.
+// Editing accordingly to give what this integration solves and how (high level).
+This integration allows you to easily set up SonarQube projects for your GitHub repositories.
 
-With this integration, you can import your GitHub repositories. Importing your GitHub repositories into SonarQube allows you to easily set up SonarQube projects.
+For the integration to work, you must complete the following main tasks:
 
-== Prerequisites
+//We can talk about this approach during the interview. Basically, I see two different operations that can be done on the same UI page. However, they share some of the configuration settings like Client ID and client secret.
+* Enabling the import of GitHub repositories into SonarQube
+* Authenticating with GitHub
 
-To integrate with GitHub Enterprise, you must be running GitHub Enterprise version 2.15+.
+The following sections detail these tasks.
 
-???
+//There is a single prerequisite for a specific GitHub plan. I've chosen to use an admonition to make it stand out within the content flow. 
+[IMPORTANT]
+====
+In case you are using GitHub Enterprise, the minimum supported version for the integration is GitHub Enterprise 2.15.
 
-== Importing your GitHub repositories into SonarQube
+You can see the version you are using in the footer of any GitHub Enterprise page.
+====
+
+== Enabling the Import of GitHub Repositories into SonarQube
 
 You need to use a GitHub App to connect SonarQube and GitHub so you can import your GitHub repositories into SonarQube.
 
-In this section, you'll complete the following steps to connect SonarQube and GitHub with a GitHub App:
+//Editing accordingly to reflect the tool updates, and also to avoid text duplications, e.g. "to connect SonarQube and GitHub")
 
-. Create your GitHub App.
-. Install your GitHub App in your organization.
-. Update your SonarQube global settings with your GitHub App information.
+Complete the following steps whose details are provided in the below sections:
+
+. Creating your GitHub App.
+. Installing the GitHub App to your organization.
+. Updating the SonarQube GitHub configuration with the GitHub App information.
 
 === Step 1: Creating your GitHub App
 
-See GitHub's documentation on http://???[creating a GitHub App] for general information on creating a GitHub App.
+Complete the steps as instructed in GitHub's documentation on link:https://docs.github.com/en/apps/creating-github-apps/registering-a-github-app[creating a GitHub App^].
 
-=== Step 2: Installing your GitHub App in your organization
+//The reader should know the following explicitly
+When you reach to the **Permissions** step, select the following permissions:
 
-Next, you need to install your GitHub App in your organizations. See GitHub's documentation on http:???[installing GitHub Apps] for more information.
+* `Read & write` permission for **Checks**.
+* `Read-only` permission for **Repository Metadata** (GitHub Enterprise) or **Metadata** (GitHub Free and Team)
+* `Read-only` permission for **Pull Requests**
+* `Read-only` permission for **Commit Statuses**
 
-=== Step 3: Updating your SonarQube global settings with your GitHub App information
+After you create the GitHub App, you land in to the GitHub App's page. Navigate to the **General** tab of this page and notice the following values:
 
-After you've created and installed your GitHub App, update your global SonarQube settings to finish integration and allow for the import of GitHub projects.
+* App ID
+* Client ID
+* Client secret (you must generate one)
+* Private key (you must generate one)
 
-Navigate to Administration > Configuration > General Settings > ALM Integrations and specify the following settings:
+You will use these values in <<step-3-updating-the-sonarqube-github-configuration-with-the-github-app-information, Step 3>> below.
 
-* GitHub API URL – For example, https://github.company.com/api/v3 for GitHub Enterprise or https://api.github.com/ for GitHub.com.
-* GitHub App Name –
-* GitHub Application ID – The App ID is found on your GitHub App's page on GitHub at Settings > Developer Settings > GitHub Apps.
-* Private Key – Your GitHub App's private key. You can generate a .pem file from your GitHub App's page under Private keys. Copy and paste the contents of the file here.
+=== Step 2: Installing the GitHub App to Your Organization
 
-== Authenticating with GitHub //aligning the heading text to be task oriented
+//No need for "Next" as we are currently in a stepped content flow.
+Complete the steps as instructed in GitHub's documentation on link:https://docs.github.com/en/apps/using-github-apps/installing-your-own-github-app[installing GitHub Apps^].
 
-To allow users to log in to SonarQube with their GitHub credentials, you can use the same GitHub App that you use to import your GitHub projects. For information on creating this GitHub app, see the documentation on Importing GitHub Repositories.
+=== Step 3: Updating the SonarQube GitHub Configuration with the GitHub App Information
 
-You also need to update your global SonarQube settings. To update these settings:
+//No need for "After you've ...." as we are currently in a stepped content flow.
+//First, I thought the reader must create a configuration and started to write the steps accordingly, but I am guessing there is already a default GitHub App within the GitHub integration page.
+This step enables the import of GitHub repositories. Do the following:
 
-Navigate to Administration > Configuration > General Settings > GitHub and update the following:
+//Edit the steps to reflect the changes, also improve a bit.
+. In your SonarQube, navigate to **Administration** -> **Configuration** -> **General Settings** -> **ALM Integrations**, and select the **GitHub** tab.
+. Click the **Edit** button within the GitHub App section of the page.
+. Edit the fields as follows (all are mandatory):
+.. **Configuration name:** Specify a name for the GitHub configuration. For example, `GitHub`.
+.. **GitHub API URL:** For example, `\https://github.company.com/api/v3` for GitHub Enterprise or `\https://api.github.com/` for GitHub Free or Team.
+.. **GitHub App ID:** App ID you see in Step 1.
+.. **Client ID:** Client ID you see in Step 1.
+.. **Client Secret:** Click `Update field value` to update the client secret with the one you see in Step 1.
+.. **Private Key:** Click `Update field value` to update the private key with the one you see in Step 1.
+. Click the **Save Configuration** button to finish enabling the import of your GitHub repositories using this GitHub App.
 
-1. Enabled – Set the switch to true.
-2. Client ID – the Client ID is found below the GitHub App ID on your GitHub App's page
-3. Client Secret – The Client secret is found below the Client ID on your GitHub App's page.
+//Make the heading text to be consistent with the previous headings (task oriented approach).
+== Authenticating with GitHub
 
-Now, users can connect their GitHub accounts from the login page using the new "Log in with GitHub" button.
+//Edit to reflect the changes along with minor text improvements.
+You can now enable the authentication of SonarQube with Github using the same SonarQube page (Step 3 above) and Github App (Step 1 above).
+This authentication allows your organization's users to log in to SonarQube with their GitHub credentials.
+
+Complete the following steps:
+
+. Follow the on-screen instructions provided under the **GitHub Authentication** section of the page.
+. Set the **Enabled** switch to true.
+. Specify the **Client ID** and **Client Secret** as the values you entered in Step 3 above.
+. Leave the **Allow users to sign-up** switch as it is (true as default).
+//I don't see something like "save configuration" as it is for the GitHub App configuration part. So the content seems a bit open ended.
+
+Your organization's users can now connect their GitHub accounts from the SonarQube's login page using the **Log in with GitHub** option.
+By enabling the GitHub repository import and authentication, you've successfully completed the integration between SonarQube and GitHub.
+
